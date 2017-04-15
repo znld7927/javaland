@@ -1,6 +1,6 @@
 package javaworld;
 
-public class Account{
+abstract class Account{
 	protected double balance;
 
 	
@@ -17,12 +17,13 @@ public class Account{
 	}
 	
 	public void credit(double s){
-		setMoney(balance+s);
+		balance +=s;
 	}
 	
 	public void debit(double s){
-		setMoney(balance-s);
-	}	
+		balance -=s;
+	}
 	
-	
+	public abstract double getWithdrawableAccount();
+	public abstract void passtime(int month);
 }
