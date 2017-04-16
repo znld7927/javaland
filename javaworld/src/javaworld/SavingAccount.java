@@ -4,10 +4,9 @@ public class SavingAccount extends Account{
 	private double interest;
 	private int month;
 	
-	public SavingAccount(double s, double in){
-		super(s);
-		setMoney(s);
-		interest = in;
+	public SavingAccount(double balance, double interest){
+		super(balance);
+		interest = interest;
 		month = 0;
 	}
 	
@@ -37,6 +36,14 @@ public class SavingAccount extends Account{
 		}
 	}
 	
+	public String toString(){
+		return String.format("SavingAccount balance:%.2f", this.getMoney());
+	}
+	
+
+	public double EstimateValue(int month) {
+		return balance * Math.pow((1+interest), month);
+	}
 	
 	
 	

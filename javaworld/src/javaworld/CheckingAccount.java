@@ -1,16 +1,16 @@
 package javaworld;
 
-public class CheckingAccount extends Account {
+public class CheckingAccount extends Account{
 	
 	private double credit_limit, interest, loan_interest;
 	//protected double balance;
 	
-	public CheckingAccount(double s, double credit_limit, double interest, double loan_interest){
-		super(s);
-		setMoney(s);
-		credit_limit = 0;
-		interest =0;
-		loan_interest =0;
+	public CheckingAccount(double balance, double credit_limit, double interest, double loan_interest){
+		super(balance);
+		setMoney(balance);
+		this.credit_limit = 0;
+		this.interest =0;
+		this.loan_interest =0;
 	}
 	
 	@Override
@@ -47,6 +47,21 @@ public class CheckingAccount extends Account {
 			return false;
 		}
 	}
+	
+	public String toString(){
+		return String.format("CheckingAccount balance:%.2f", this.getMoney());
+	}
+	
+
+	public double EstimateValue(int month) {
+		if(balance > 0){
+			return getMoney() * (1+interest*month);
+		}else{
+			return getMoney() * (1+loan_interest*month);
+		}
+	}
+	
+	
 	/*
 	public void nextMonth(){
 		if(0<=balance){
